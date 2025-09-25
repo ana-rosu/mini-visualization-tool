@@ -1,0 +1,20 @@
+html {
+  font-size: 62.5%; /* so that 1rem = 10px */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
