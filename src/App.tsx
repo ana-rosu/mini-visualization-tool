@@ -1,9 +1,12 @@
-import "./App.css";
+import Header from "./components/Header/Header";
+
+import GlobalStyle from "./styles/GlobalStyle";
 
 function App() {
   return (
     <>
-      <h1>Hello, Visualization Tool!</h1>
+      <GlobalStyle />
+      <Header />
     </>
   );
 }
