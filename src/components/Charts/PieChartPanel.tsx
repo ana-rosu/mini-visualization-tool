@@ -14,6 +14,8 @@ type Props = {
 };
 
 const RADIAN = Math.PI / 180;
+const LEGEND_HEIGHT = 36;
+const PIE_OUTER_RADIUS_PERCENTAGE = 65;
 
 const renderCustomizedLabel = ({
   cx,
@@ -59,7 +61,7 @@ const PieChartPanel = ({ data }: Props) => {
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={"65%"}
+            outerRadius={`${PIE_OUTER_RADIUS_PERCENTAGE}%`}
             dataKey="value"
           >
             {data.map((entry, index) => (
@@ -72,7 +74,7 @@ const PieChartPanel = ({ data }: Props) => {
           <Tooltip
             formatter={(value, _, entry) => [`${value}`, `${entry.name}`]}
           />
-          <Legend verticalAlign="bottom" height={36} />
+          <Legend verticalAlign="bottom" height={LEGEND_HEIGHT} />
         </PieChart>
       </ResponsiveContainer>
     </PanelContainer>

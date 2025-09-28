@@ -13,6 +13,10 @@ export const PanelContainer = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}) {
     height: 40rem;
   }
+  @media (min-width: ${({ theme }) => theme.breakpoints["4k"]}) {
+    max-width: 130rem;
+    height: 70rem;
+  }
 `;
 
 export const PanelTitle = styled.h2`

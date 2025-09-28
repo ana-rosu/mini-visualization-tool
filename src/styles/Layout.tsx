@@ -10,7 +10,7 @@ export const SectionContainer = styled.div`
     padding: 1rem 2rem;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints["4k"]}) {
-    padding: 5rem 50rem 0;
+    padding: 5rem 20rem 0;
   }
 `;
 
