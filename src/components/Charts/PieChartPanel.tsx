@@ -42,10 +42,7 @@ const renderCustomizedLabel = ({
 
 const PieChartPanel = ({ data }: Props) => {
   const theme = useTheme();
-  const order = ["Easy", "Medium", "Hard"];
-  const sortedData = data.sort(
-    (a, b) => order.indexOf(a.name) - order.indexOf(b.name)
-  );
+
   const COLORS = [
     theme.colors.lightBlue,
     theme.colors.mediumBlue,
@@ -57,7 +54,7 @@ const PieChartPanel = ({ data }: Props) => {
       <ResponsiveContainer width="100%" height="90%">
         <PieChart width={400} height={400}>
           <Pie
-            data={sortedData}
+            data={data}
             cx="50%"
             cy="50%"
             labelLine={false}

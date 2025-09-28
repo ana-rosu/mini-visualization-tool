@@ -16,7 +16,7 @@ const Dashboard = () => {
     selectedCategory === "all" ? true : cat.id === selectedCategory
   );
 
-  const getDifficultyDistribution = (categoryId: number | "all") => {
+  const getDifficultyDistribution = () => {
     const distribution: { [key: string]: number } = {
       Easy: 0,
       Medium: 0,
@@ -46,7 +46,7 @@ const Dashboard = () => {
         />
         <PieChartPanel
           data={
-            Object.entries(getDifficultyDistribution(selectedCategory)).map(
+            Object.entries(getDifficultyDistribution()).map(
               ([name, value]) => ({ name, value })
             ) || []
           }
