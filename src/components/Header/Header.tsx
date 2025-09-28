@@ -1,4 +1,4 @@
-import { HeaderTitle, DateContainer } from "./Header.styles";
+import { HeaderTitle, DateContainer } from "./Header.styles.js";
 import { HeaderContainer } from "../../styles/Layout";
 
 const Header = () => {

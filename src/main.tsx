@@ -1,13 +1,16 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/theme.ts";
+import { theme } from "./theme/theme.ts";
+import { TriviaProvider } from "./contexts/TriviaProvider.tsx";
 import App from "./App.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider theme={theme}>
-      <App />
+      <TriviaProvider>
+        <App />
+      </TriviaProvider>
     </ThemeProvider>
   </StrictMode>
 );
