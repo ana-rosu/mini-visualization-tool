@@ -17,7 +17,9 @@ export const TriviaProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [categories, setCategories] = useState<Category[]>([]);
-  const [selectedCategory, setSelectedCategory] = useState<number | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<number | "all">(
+    "all"
+  );
 
   useEffect(() => {
     const fetchCategoriesWithCounts = async () => {
@@ -34,12 +36,6 @@ export const TriviaProvider: React.FC<{ children: React.ReactNode }> = ({
     };
     fetchCategoriesWithCounts();
   }, []);
-
-  useEffect(() => {
-    if (categories.length > 0) {
-      console.log("Categories state updated:", categories);
-    }
-  }, [categories]);
 
   const value = {
     categories,
