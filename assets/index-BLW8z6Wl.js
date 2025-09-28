@@ -67,7 +67,11 @@ Error generating stack: `+u.message+`
   @media (min-width: ${({theme:e})=>e.breakpoints["4k"]}) {
     padding: 5rem 50rem 0;
   }
-`,Zj=fr(_E)``,Qj=fr(_E)``,Wj=()=>{const e={weekday:"long",year:"numeric",month:"short",day:"numeric"},t=new Date().toLocaleString("en-US",e);return we.jsxs(Zj,{children:[we.jsx(Xj,{children:"Open Trivia Dashboard"}),we.jsx(Vj,{children:t})]})},Fj=fr.select`
+`,Zj=fr(_E)``,Qj=fr(_E)`
+  @media (max-width: ${({theme:e})=>e.breakpoints.mobile}) {
+    padding: 1rem 2rem 3rem;
+  }
+`,Wj=()=>{const e={weekday:"long",year:"numeric",month:"short",day:"numeric"},t=new Date().toLocaleString("en-US",e);return we.jsxs(Zj,{children:[we.jsx(Xj,{children:"Open Trivia Dashboard"}),we.jsx(Vj,{children:t})]})},Fj=fr.select`
   padding: 1rem 4rem 1rem 1rem;
   font-size: 1.6rem;
   border-radius: 2rem;
@@ -176,7 +180,7 @@ Error generating stack: `+u.message+`
   font-size: 2rem;
   font-weight: 300;
   margin-top: 0;
-`,oI=({data:e})=>{const t=xE();return we.jsxs(oD,{children:[we.jsx(cD,{children:"Distribution of questions by category"}),we.jsx(fC,{width:"100%",height:"90%",children:we.jsxs(WH,{width:500,height:300,data:e,margin:{top:5,right:30,left:20,bottom:+`${e.length>1?105:5}`},children:[we.jsx(YC,{strokeDasharray:"3 3"}),we.jsx(GC,{dataKey:"name",angle:e.length>1?-45:0,textAnchor:"end"}),we.jsx(XC,{}),we.jsx(sC,{formatter:n=>[`${n}`,"questions"]}),we.jsx(LC,{dataKey:"questionCount",fill:t.colors.lightBlue,activeBar:we.jsx(ym,{fill:t.colors.mediumBlue,stroke:t.colors.mediumBlue})})]})})]})},ZA=Math.PI/180,cI=({cx:e,cy:t,midAngle:n,innerRadius:r,outerRadius:l,percent:o})=>{const s=r+(l-r)*.5,f=e+s*Math.cos(-(n??0)*ZA),v=t+s*Math.sin(-(n??0)*ZA);return we.jsx("text",{x:f,y:v,fill:"white",textAnchor:f>e?"start":"end",dominantBaseline:"central",children:`${((o??1)*100).toFixed(0)}%`})},sI=({data:e})=>{const t=xE(),n=[t.colors.lightBlue,t.colors.mediumBlue,t.colors.darkBlue];return we.jsxs(oD,{children:[we.jsx(cD,{children:"Distribution of questions by difficulty"}),we.jsx(fC,{width:"100%",height:"90%",children:we.jsxs(uI,{width:400,height:400,children:[we.jsx(jC,{data:e,cx:"50%",cy:"50%",labelLine:!1,label:cI,outerRadius:"65%",dataKey:"value",children:e.map((r,l)=>we.jsx(Ao,{fill:n[l%n.length]},`cell-${r.name}`))}),we.jsx(sC,{formatter:(r,l,o)=>[`${r}`,`${o.name}`]}),we.jsx(xf,{verticalAlign:"bottom",height:36})]})})]})},fI=fr.div`
+`,oI=({data:e})=>{const t=xE();return we.jsxs(oD,{children:[we.jsx(cD,{children:"Distribution of questions by category"}),we.jsx(fC,{width:"100%",height:"90%",children:we.jsxs(WH,{width:500,height:300,data:e,margin:{top:5,right:30,left:window.innerWidth<768?-10:20,bottom:e.length>1?105:5},children:[we.jsx(YC,{strokeDasharray:"3 3"}),we.jsx(GC,{dataKey:"name",angle:e.length>1?-45:0,textAnchor:"end"}),we.jsx(XC,{}),we.jsx(sC,{formatter:n=>[`${n}`,"questions"]}),we.jsx(LC,{dataKey:"questionCount",fill:t.colors.lightBlue,activeBar:we.jsx(ym,{fill:t.colors.mediumBlue,stroke:t.colors.mediumBlue})})]})})]})},ZA=Math.PI/180,cI=({cx:e,cy:t,midAngle:n,innerRadius:r,outerRadius:l,percent:o})=>{const s=r+(l-r)*.5,f=e+s*Math.cos(-(n??0)*ZA),v=t+s*Math.sin(-(n??0)*ZA);return we.jsx("text",{x:f,y:v,fill:"white",textAnchor:f>e?"start":"end",dominantBaseline:"central",children:`${((o??1)*100).toFixed(0)}%`})},sI=({data:e})=>{const t=xE(),n=[t.colors.lightBlue,t.colors.mediumBlue,t.colors.darkBlue];return we.jsxs(oD,{children:[we.jsx(cD,{children:"Distribution of questions by difficulty"}),we.jsx(fC,{width:"100%",height:"90%",children:we.jsxs(uI,{width:400,height:400,children:[we.jsx(jC,{data:e,cx:"50%",cy:"50%",labelLine:!1,label:cI,outerRadius:"65%",dataKey:"value",children:e.map((r,l)=>we.jsx(Ao,{fill:n[l%n.length]},`cell-${r.name}`))}),we.jsx(sC,{formatter:(r,l,o)=>[`${r}`,`${o.name}`]}),we.jsx(xf,{verticalAlign:"bottom",height:36})]})})]})},fI=fr.div`
   display: flex;
   gap: 2rem;
 
