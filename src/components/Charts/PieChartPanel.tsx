@@ -9,6 +9,7 @@ import {
 import { PanelContainer, PanelTitle } from "../../styles/Panel";
 import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { useTheme } from "styled-components";
+import React from "react";
 
 type Props = {
   data: { name: string; value: number }[];
@@ -52,7 +53,7 @@ const PieChartPanel = ({ data }: Props) => {
     theme.colors.darkBlue,
   ];
   const totalQuestions = data.reduce((sum, entry) => sum + entry.value, 0);
-  
+
   return (
     <PanelContainer>
       <PanelTitle>Distribution of questions by difficulty</PanelTitle>
@@ -87,4 +88,4 @@ const PieChartPanel = ({ data }: Props) => {
     </PanelContainer>
   );
 };
-export default PieChartPanel;
+export default React.memo(PieChartPanel);

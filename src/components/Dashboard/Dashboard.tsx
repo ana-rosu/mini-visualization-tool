@@ -4,6 +4,7 @@ import { useTrivia } from "../../contexts/useTrivia";
 import BarChartPanel from "../Charts/BarChartPanel";
 import PieChartPanel from "../Charts/PieChartPanel";
 import { ChartsContainer } from "./Dashboard.styles";
+import { useMemo } from "react";
 
 const Dashboard = () => {
   const { categories, selectedCategory, setSelectedCategory } = useTrivia();
@@ -16,20 +17,22 @@ const Dashboard = () => {
     selectedCategory === "all" ? true : cat.id === selectedCategory
   );
 
-  const getDifficultyDistribution = () => {
-    const distribution: { [key: string]: number } = {
-      Easy: 0,
-      Medium: 0,
-      Hard: 0,
-    };
+  const difficultyDistributionData = useMemo(() => {
+    const distribution = { Easy: 0, Medium: 0, Hard: 0 };
+
     filteredCategories.forEach((cat) => {
       distribution.Easy += cat.questionCount?.total_easy_question_count || 0;
       distribution.Medium +=
         cat.questionCount?.total_medium_question_count || 0;
       distribution.Hard += cat.questionCount?.total_hard_question_count || 0;
     });
-    return distribution;
-  };
+
+    return Object.entries(distribution).map(([name, value]) => ({
+      name,
+      value,
+    }));
+  }, [filteredCategories]);
+
   return (
     <DashboardContainer>
       <CategoryDropdown
@@ -44,13 +47,7 @@ const Dashboard = () => {
             questionCount: cat.questionCount?.total_question_count,
           }))}
         />
-        <PieChartPanel
-          data={
-            Object.entries(getDifficultyDistribution()).map(
-              ([name, value]) => ({ name, value })
-            ) || []
-          }
-        />
+        <PieChartPanel data={difficultyDistributionData} />
       </ChartsContainer>
     </DashboardContainer>
   );
