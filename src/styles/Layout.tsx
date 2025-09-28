@@ -16,4 +16,8 @@ export const SectionContainer = styled.div`
 
 export const HeaderContainer = styled(SectionContainer)``;
 
-export const DashboardContainer = styled(SectionContainer)``;
+export const DashboardContainer = styled(SectionContainer)`
+  @media (max-width: ${({ theme }) => theme.breakpoints.mobile}) {
+    padding: 1rem 2rem 3rem;
+  }
+`;

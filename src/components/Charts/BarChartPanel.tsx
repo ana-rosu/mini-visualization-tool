@@ -28,8 +28,8 @@ const BarChartPanel = ({ data }: Props) => {
           margin={{
             top: 5,
             right: 30,
-            left: 20,
-            bottom: Number(`${data.length > 1 ? 105 : 5}`),
+            left: window.innerWidth < 768 ? -10 : 20,
+            bottom: data.length > 1 ? 105 : 5,
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
