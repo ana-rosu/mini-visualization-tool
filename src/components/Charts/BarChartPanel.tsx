@@ -9,6 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { PanelContainer, PanelTitle } from "../../styles/Panel";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { useTheme } from "styled-components";
 import { useEffect, useState } from "react";
 
@@ -55,7 +56,9 @@ const BarChartPanel = ({ data }: Props) => {
 
   const tooltipFormatter = (value: number) => [`${value}`, "questions"];
   const xAxisAngle = data.length > 1 ? -ANGLE : 0;
-
+  const isDataReady = data.every(
+    (cat) => cat.questionCount && cat.questionCount !== undefined
+  );
   return (
     <PanelContainer>
       <PanelTitle>
@@ -63,32 +66,36 @@ const BarChartPanel = ({ data }: Props) => {
           ? "Distribution of questions by category"
           : `Question count for ${data[0]?.name}`}
       </PanelTitle>
-      <ResponsiveContainer width="100%" height="90%">
-        <BarChart
-          data={data}
-          margin={{
-            top: TOP_MARGIN_BASE,
-            right: RIGHT_MARGIN_BASE,
-            left: leftMargin,
-            bottom: bottomMargin,
-          }}
-        >
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" angle={xAxisAngle} textAnchor="end" />
-          <YAxis />
-          <Tooltip formatter={tooltipFormatter} />
-          <Bar
-            dataKey="questionCount"
-            fill={theme.colors.lightBlue}
-            activeBar={
-              <Rectangle
-                fill={theme.colors.mediumBlue}
-                stroke={theme.colors.mediumBlue}
-              />
-            }
-          />
-        </BarChart>
-      </ResponsiveContainer>
+      {data.length > 0 && isDataReady ? (
+        <ResponsiveContainer width="100%" height="90%">
+          <BarChart
+            data={data}
+            margin={{
+              top: TOP_MARGIN_BASE,
+              right: RIGHT_MARGIN_BASE,
+              left: leftMargin,
+              bottom: bottomMargin,
+            }}
+          >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" angle={xAxisAngle} textAnchor="end" />
+            <YAxis />
+            <Tooltip formatter={tooltipFormatter} />
+            <Bar
+              dataKey="questionCount"
+              fill={theme.colors.lightBlue}
+              activeBar={
+                <Rectangle
+                  fill={theme.colors.mediumBlue}
+                  stroke={theme.colors.mediumBlue}
+                />
+              }
+            />
+          </BarChart>
+        </ResponsiveContainer>
+      ) : (
+        <LoadingSpinner />
+      )}
     </PanelContainer>
   );
 };

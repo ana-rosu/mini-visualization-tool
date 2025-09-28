@@ -7,6 +7,7 @@ import {
   Tooltip,
 } from "recharts";
 import { PanelContainer, PanelTitle } from "../../styles/Panel";
+import LoadingSpinner from "../LoadingSpinner/LoadingSpinner";
 import { useTheme } from "styled-components";
 
 type Props = {
@@ -50,33 +51,39 @@ const PieChartPanel = ({ data }: Props) => {
     theme.colors.mediumBlue,
     theme.colors.darkBlue,
   ];
+  const totalQuestions = data.reduce((sum, entry) => sum + entry.value, 0);
+  
   return (
     <PanelContainer>
       <PanelTitle>Distribution of questions by difficulty</PanelTitle>
-      <ResponsiveContainer width="100%" height="90%">
-        <PieChart width={400} height={400}>
-          <Pie
-            data={data}
-            cx="50%"
-            cy="50%"
-            labelLine={false}
-            label={renderCustomizedLabel}
-            outerRadius={`${PIE_OUTER_RADIUS_PERCENTAGE}%`}
-            dataKey="value"
-          >
-            {data.map((entry, index) => (
-              <Cell
-                key={`cell-${entry.name}`}
-                fill={COLORS[index % COLORS.length]}
-              />
-            ))}
-          </Pie>
-          <Tooltip
-            formatter={(value, _, entry) => [`${value}`, `${entry.name}`]}
-          />
-          <Legend verticalAlign="bottom" height={LEGEND_HEIGHT} />
-        </PieChart>
-      </ResponsiveContainer>
+      {totalQuestions === 0 ? (
+        <LoadingSpinner />
+      ) : (
+        <ResponsiveContainer width="100%" height="90%">
+          <PieChart width={400} height={400}>
+            <Pie
+              data={data}
+              cx="50%"
+              cy="50%"
+              labelLine={false}
+              label={renderCustomizedLabel}
+              outerRadius={`${PIE_OUTER_RADIUS_PERCENTAGE}%`}
+              dataKey="value"
+            >
+              {data.map((entry, index) => (
+                <Cell
+                  key={`cell-${entry.name}`}
+                  fill={COLORS[index % COLORS.length]}
+                />
+              ))}
+            </Pie>
+            <Tooltip
+              formatter={(value, _, entry) => [`${value}`, `${entry.name}`]}
+            />
+            <Legend verticalAlign="bottom" height={LEGEND_HEIGHT} />
+          </PieChart>
+        </ResponsiveContainer>
+      )}
     </PanelContainer>
   );
 };
