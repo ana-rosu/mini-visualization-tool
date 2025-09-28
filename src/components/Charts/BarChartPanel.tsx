@@ -6,7 +6,6 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 import { PanelContainer, PanelTitle } from "../../styles/Panel";
@@ -41,8 +40,6 @@ const BarChartPanel = ({ data }: Props) => {
           />
           <YAxis />
           <Tooltip formatter={(value) => [`${value}`, "questions"]} />
-
-          {/* <Legend formatter={() => "Question By Category"} /> */}
           <Bar
             dataKey="questionCount"
             fill={theme.colors.lightBlue}
