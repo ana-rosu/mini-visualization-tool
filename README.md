@@ -19,7 +19,8 @@ It allows users to explore trivia questions distributions across categories and 
 - API Integration: [Open Trivia DB API](https://opentdb.com/api_config.php). 
 - State Management: React Context API (useTrivia context)
 - Styling: [Styled Components](https://styled-components.com/) for modular, maintainable CSS
-
+  
+> Data Fetching: Categories are fetched first, then question counts for each category are fetched in parallel with Promise.all; since the task is focused on distributions by category and difficulty, I used the count endpoint as it’s more performant and accurate, avoids unnecessary API calls and processing overhead. If the project required showing actual questions or other metadata (e.g., text analysis, types), then fetching raw questions would make sense.
 ## Installation
 
 1) Clone the repository:
